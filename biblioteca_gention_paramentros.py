@@ -241,6 +241,7 @@ def eliminar(indice: str):
     pedidos_modificar.close()
     archivo_aux.close()
     os.rename(ARCHIVO_AUX, ARCHIVO_PEDIDOS)
+    men.correctamente_eliminado()
 
 """
 Pre: Requiere que el comando modificar sea usado correctamente (modificar ID
@@ -294,6 +295,7 @@ def modificar(id: str, cantidar_verdura: str, tipo_verdura: str):
     pedidos_modificar.close()
     archivo_aux.close()
     os.rename(ARCHIVO_AUX, ARCHIVO_PEDIDOS)
+    men.correctamente_modificado()
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
@@ -347,7 +349,6 @@ def gestion_modificar(argv: list):
     #fin errores
     else:
         modificar((argv)[MODIFICAR_ID], (sys.argv)[MODIFICAR_CANTIDAD], (sys.argv)[MODIFICAR_TIPO])
-        men.correctamente_modificado()
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
@@ -371,7 +372,6 @@ def gestion_eliminar(argv: list):
     #fin errores
     else:
         eliminar((sys.argv)[CONSOLA_ID])
-        men.correctamente_eliminado()
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
