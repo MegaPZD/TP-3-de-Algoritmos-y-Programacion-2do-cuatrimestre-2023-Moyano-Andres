@@ -7,13 +7,13 @@ def error_eliminar_mal_ingresado():
     print("ERROR, para usar eliminar de debe ingresar:  eliminar ID")
 
 def listar_tabla():
-    print(f"ID\tTIPO\tCANTIDAD")
+    print("TIPO\tCANTIDAD\tID\tNOMBRE")
 
 """
 Recibe el ID, el tipo de verdura y la cantidad para imprimirlos
 """
-def imprimir_listar(id_pedido: str, tipo_pedido: str, cant_pedido: str):
-    print(f"{id_pedido}\t{tipo_pedido}\t{cant_pedido}")
+def imprimir_listar(nombre: str, id_pedido: str, tipo_pedido: str, cant_pedido: str):
+    print(f"{tipo_pedido}\t{cant_pedido}\t\t{id_pedido}\t{nombre}")
 
 """
 Recibe el ultimo ID de 'clientes.csv' y lo comparará con el id ingresado.
@@ -38,6 +38,9 @@ def nunca_se_crearon_archivos():
 def no_se_puede_crear_archivo_aux():
     print("No se puede crear un archivo nesesario para la ejecucion.")
 
+"""
+Recibe el argv para imprimirlo por pantalla.
+"""
 def usted_ingreso(argv: list):
     print(f"Usted ingreso: {argv}.")
 

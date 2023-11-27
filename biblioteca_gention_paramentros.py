@@ -19,6 +19,7 @@ AGREGAR = 'agregar'
 MODIFICAR = 'modificar'
 ELIMINAR = 'eliminar'
 LISTAR = 'listar'
+LECTOR_NOMBRE = 1
 LISTAR_TIPO = 1
 LISTAR_CANTIDAD = 2
 CONSOLA_NUMERO_VERDURAS = 2
@@ -131,10 +132,36 @@ def agregar(numero_verduras: str, tipo_verdura:str, nombre: str):
     archivo_clientes.close()
 
 """
+Pre: Requiere las mismas precondiciones que listar. Dado que es una funcion auxiliar
+de esta, las precondiciones mencionadas deberian estar cumplidas por su funcion
+madre.
+
+Post: Devuelve un Nombre de la lista de pedidos de clientes.py dependiendo del id
+que ingrese a esta funcion.
+"""
+def nombre_segun_id(id: str) -> str:
+    try:
+        clientes = open(ARCHIVO_CLIENTES, LECTURA)
+    except:
+        men.nunca_se_crearon_archivos()
+        return
+    
+    lector = csv.reader(clientes, delimiter= DELIMITADOR_CSV)
+
+    nombre = 'nombre'
+
+    for linea in lector:
+        if(id == linea[ID]):
+            nombre = linea[LECTOR_NOMBRE]
+    clientes.close()
+    return nombre
+
+"""
 Pre: Requiere que el comando listar sea usado correctamente (listar ID o
 listar), que el ID sea positivo y que exista. Si no existe el archivo 
-'pedidos.csv' listar no se ejecutará (se asume que no hay restricción para
-ingresar en la carpeta donde se almacenan los archivos requeridos para el TP3).
+'pedidos.csv' listar mostrará un mensaje de error y terminará el programa
+(se asume que no hay restricción para ingresar en la carpeta donde se almacenan
+los archivos requeridos para el TP3).
 
 Post: Mostará por pantalla los pedidos de una o todas las ID, dependiendo de si
 se ingreso listar o listar ID.
@@ -152,12 +179,12 @@ def listar(a_listar: str = LISTAR_PARAMETRO_DEFECTO):
     if(a_listar == LISTAR_PARAMETRO_DEFECTO):
         men.listar_tabla()
         for lineas in reader:
-            men.imprimir_listar(lineas[ID], lineas[LISTAR_TIPO], lineas[LISTAR_CANTIDAD])        
+            men.imprimir_listar(nombre_segun_id(lineas[ID]) ,lineas[ID], lineas[LISTAR_TIPO], lineas[LISTAR_CANTIDAD])        
     else:
         men.listar_tabla()
         for lineas in reader:
             if(lineas[ID] == a_listar):
-                    men.imprimir_listar(lineas[ID], lineas[LISTAR_TIPO], lineas[LISTAR_CANTIDAD])        
+                    men.imprimir_listar(nombre_segun_id(a_listar), lineas[ID], lineas[LISTAR_TIPO], lineas[LISTAR_CANTIDAD])        
 
 """
 Pre: Requiere que el comando eliminar sea usado correctamente (eliminar ID), 
@@ -270,7 +297,8 @@ def modificar(id: str, cantidar_verdura: str, tipo_verdura: str):
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
-ingresarlos para este comando, necesariamnete puede ingresar todos.
+ingresarlos para este comando, no necesariamente tiene que ingresar todos,
+si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
 
 Post: Gestiona los parametros ingresados por el usuario para agregar, 
 si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
@@ -295,7 +323,8 @@ def gestion_agregar(argv: list):
    
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
-ingresarlos para este comando, necesariamnete puede ingresar todos.
+ingresarlos para este comando, no necesariamente tiene que ingresar todos,
+si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
 
 Post: Gestiona los parametros ingresados por el usuario para modificar, 
 si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
@@ -322,7 +351,8 @@ def gestion_modificar(argv: list):
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
-ingresarlos para este comando, necesariamnete puede ingresar todos.
+ingresarlos para este comando, no necesariamente tiene que ingresar todos,
+si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
 
 Post: Gestiona los parametros ingresados por el usuario para eliminar, 
 si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
@@ -345,7 +375,8 @@ def gestion_eliminar(argv: list):
 
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
-ingresarlos para este comando, necesariamnete puede ingresar todos.
+ingresarlos para este comando, no necesariamente tiene que ingresar todos,
+si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
 
 Post: Gestiona los parametros ingresados por el usuario para listar, 
 si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
