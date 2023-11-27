@@ -39,11 +39,11 @@ ERROR_TOPE_ELIMINAR = 3
 ERROR_SUPERIOR_MOSTRAR = 5
 
 """
-pre: Requiere que el id sea mayor extricto que 0 y que el comando eliminar sea
+Pre: Requiere que el ID sea mayor extricto que 0 y que el comando 'eliminar' sea
 ingresado correctamente (eliminar ID) (se asume que no hay restricción para
 ingresar en la carpeta donde se almacenan los archivos requeridos para el TP3).
 
-post: Devuelve verdadero si el id existe en el archivo de clientes.csv, sino es
+Post: Devuelve verdadero si el ID existe en el archivo de clientes.csv, sí no es
 así devolverá falso y se mostrará uno de dos mensajes de error: sí el id fue
 eliminado o sí aun no esta creado.
 """
@@ -81,11 +81,11 @@ def verificar_verdura_correcta(tipo_verdura: str) -> bool:
     return verdura_correcta
 
 """
-Pre: Requiere que el comando agregar sea correctamente usado (agregar 
+Pre: Requiere que el comando 'agregar' sea correctamente usado (agregar 
 numero_verduras tipo_verdura nombre_persona) y que el numero de verduras sea
 positivo.
 
-Post: Agrega una linea a los archivos 'clientes,csv' y 'pedidos.csv' respetando
+Post: Agrega una línea a los archivos 'clientes,csv' y 'pedidos.csv' respetando
 sus respectivos formatos. Sí estos no existen, los crea (se asume que no hay 
 restricción para ingresar en la carpeta donde se almacenan los archivos 
 requeridos para el TP3).
@@ -132,8 +132,8 @@ def agregar(numero_verduras: str, tipo_verdura:str, nombre: str):
     archivo_clientes.close()
 
 """
-Pre: Requiere las mismas precondiciones que listar. Dado que es una funcion auxiliar
-de esta, las precondiciones mencionadas deberian estar cumplidas por su funcion
+Pre: Requiere las mismas precondiciones que 'listar'. Dado que es una función auxiliar
+de esta, las precondiciones mencionadas deberían estar cumplidas por su función
 madre.
 
 Post: Devuelve un Nombre de la lista de pedidos de clientes.py dependiendo del id
@@ -157,7 +157,7 @@ def nombre_segun_id(id: str) -> str:
     return nombre
 
 """
-Pre: Requiere que el comando listar sea usado correctamente (listar ID o
+Pre: Requiere que el comando 'listar' sea usado correctamente (listar ID o
 listar), que el ID sea positivo y que exista. Si no existe el archivo 
 'pedidos.csv' listar mostrará un mensaje de error y terminará el programa
 (se asume que no hay restricción para ingresar en la carpeta donde se almacenan
@@ -244,12 +244,12 @@ def eliminar(indice: str):
 
 """
 Pre: Requiere que el comando modificar sea usado correctamente (modificar ID
-cantidad_verdura tipo_verdura), que el ID sea positivo y que exista y tambien el
+cantidad_verdura tipo_verdura), que el ID sea positivo y que exista y también el
 tipo de verdura debe ser 'T', 'Z', 'B' o 'L' (se asume que no hay restricción para 
 ingresar en la carpeta donde se almacenan los archivos requeridos para el TP3).
 
 Post: Modifica el archivo agregando un nuevo pedido para determinado ID. Si el
-pedido a modificar tiene el mismo tipo_verdura que uno existe, este ultimo se
+pedido a modificar tiene el mismo tipo_verdura que uno existe, este último se
 sobreescribirá.
 """
 def modificar(id: str, cantidar_verdura: str, tipo_verdura: str):
@@ -298,11 +298,11 @@ def modificar(id: str, cantidar_verdura: str, tipo_verdura: str):
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
 ingresarlos para este comando, no necesariamente tiene que ingresar todos,
-si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
+si hace esto último, el programa se lo hará saber con un mensaje de error.
 
-Post: Gestiona los parametros ingresados por el usuario para agregar, 
-si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
-saber por consola, en cambio si los ingreso de forma correcta se posederá a realizar 
+Post: Gestiona los parámetros ingresados por el usuario para 'agregar', 
+si este ingresó de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
+saber por consola, en cambio si los ingresó de forma correcta se prosederá a realizar 
 la acción correspondiente a este comando.
 """
 def gestion_agregar(argv: list):
@@ -324,11 +324,11 @@ def gestion_agregar(argv: list):
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
 ingresarlos para este comando, no necesariamente tiene que ingresar todos,
-si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
+si hace esto último, el programa se lo hará saber con un mensaje de error.
 
-Post: Gestiona los parametros ingresados por el usuario para modificar, 
-si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
-saber por consola, en cambio si los ingreso de forma correcta se posederá a realizar 
+Post: Gestiona los parámetros ingresados por el usuario para 'modificar', 
+si este ingresó de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
+saber por consola, en cambio si los ingresó de forma correcta se prosederá a realizar 
 la acción correspondiente a este comando.
 """
 def gestion_modificar(argv: list):
@@ -352,11 +352,11 @@ def gestion_modificar(argv: list):
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
 ingresarlos para este comando, no necesariamente tiene que ingresar todos,
-si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
+si hace esto último, el programa se lo hará saber con un mensaje de error.
 
-Post: Gestiona los parametros ingresados por el usuario para eliminar, 
-si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
-saber por consola, en cambio si los ingreso de forma correcta se posederá a realizar 
+Post: Gestiona los parámetros ingresados por el usuario para 'eliminar', 
+si este ingresó de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
+saber por consola, en cambio si los ingresó de forma correcta se prosederá a realizar 
 la acción correspondiente a este comando.
 """
 def gestion_eliminar(argv: list):
@@ -376,11 +376,11 @@ def gestion_eliminar(argv: list):
 """
 Pre: Se asume que el usuario sabe que poner los parametros y en que orden 
 ingresarlos para este comando, no necesariamente tiene que ingresar todos,
-si hace esto ultimo, el programa se lo hará saber con un mensaje de error.
+si hace esto último, el programa se lo hará saber con un mensaje de error.
 
-Post: Gestiona los parametros ingresados por el usuario para listar, 
-si este ingreso de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
-saber por consola, en cambio si los ingreso de forma correcta se posederá a realizar 
+Post: Gestiona los parámetros ingresados por el usuario para 'listar', 
+si este ingresó de forma incorrecta uno de sus parametros o hay faltante de estos se le hará
+saber por consola, en cambio si los ingresó de forma correcta se prosederá a realizar 
 la acción correspondiente a este comando.
 """
 def gestion_listar(argv: list):
@@ -400,7 +400,7 @@ def gestion_listar(argv: list):
         listar((argv)[CONSOLA_ID])
 
 """
-Pre: Se asume que el argv recibido tiene por lo menos longitud de 2
+Pre: Se asume que el argv recibido tiene por lo menos longitud de 2.
 
 Post: Gestiona que comando fue ingresado en consola, para cada comando
 gestion_parametros_consola enviará los datos del argv a una función auxiliar.
